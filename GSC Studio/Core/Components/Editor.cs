@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp;
+using CefSharp.SchemeHandler;
 using CefSharp.WinForms;
 using GSC_Studio.Core.Service;
 using WeifenLuo.WinFormsUI.Docking;
@@ -35,10 +36,23 @@ namespace GSC_Studio.Core.Components
             SAFECONTROL.Hide();
 
             CefSettings settings = new CefSettings();
+            settings.WindowlessRenderingEnabled = true;
             settings.BackgroundColor = 0x00;
+
+            settings.RegisterScheme(new CefCustomScheme
+            {
+                SchemeName = "CACHE",
+                DomainName = "gsc_studio",
+                SchemeHandlerFactory = new FolderSchemeHandlerFactory(
+                    rootFolder: (Initialization.CACHE_PATH + "/editor/"),
+                    hostName: "gsc_studio",
+                    defaultPage: "index.html"
+                )
+            });
+
             Cef.Initialize(settings);
 
-            WebControl = new ChromiumWebBrowser(Initialization.CACHE_PATH + "/editor/index.html")
+            WebControl = new ChromiumWebBrowser("CACHE://gsc_studio/")
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.FromArgb(30, 30, 30),
