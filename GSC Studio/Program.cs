@@ -17,6 +17,8 @@ namespace GSC_Studio
         [STAThread]
         static void Main(string[] args)
         {
+            const string EDITOR = "https://github.com/GSC-Studio/Monaco/archive/main.zip";
+
             Initialization inital = new Initialization();
             Startup startup = new Startup();
 
@@ -27,6 +29,7 @@ namespace GSC_Studio
                 if (MessageBox.Show("You launch GSC Studio for the first time, important modules will be installed.", "GSC Studio - Service", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     inital.CreateFileInCache("startup.json", JsonConvert.SerializeObject(startup));
+                    inital.CreateRepositoryToCache(EDITOR);
                 }
                 else
                 {

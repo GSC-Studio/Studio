@@ -29,7 +29,16 @@ namespace GSC_Studio.Core.Components
         /// </summary>
         private void InitializeComponent()
         {
+            this.SAFECONTROL = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // SAFECONTROL
+            // 
+            this.SAFECONTROL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SAFECONTROL.Location = new System.Drawing.Point(0, 0);
+            this.SAFECONTROL.Name = "SAFECONTROL";
+            this.SAFECONTROL.Size = new System.Drawing.Size(454, 262);
+            this.SAFECONTROL.TabIndex = 0;
             // 
             // Editor
             // 
@@ -37,6 +46,7 @@ namespace GSC_Studio.Core.Components
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(454, 262);
+            this.Controls.Add(this.SAFECONTROL);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
             | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom) 
@@ -51,5 +61,7 @@ namespace GSC_Studio.Core.Components
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel SAFECONTROL;
     }
 }

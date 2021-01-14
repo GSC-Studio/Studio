@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.IO.Compression;
 
 namespace GSC_Studio.Core.Service
 {
     public class Initialization
     {
-        internal readonly string CACHE_PATH = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/.gscCache");
-        internal readonly string PROJECT_PATH = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/GSC Repository");
+        internal static readonly string CACHE_PATH = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/.gscCache");
+        internal static readonly string PROJECT_PATH = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/GSC Repository");
 
         public Initialization()
         { }
@@ -42,5 +43,18 @@ namespace GSC_Studio.Core.Service
         }
 
         public List<string> GetFoldersFromProject() => Directory.GetDirectories(CACHE_PATH).ToList();
+    
+        public void CreateRepositoryToCache(string url)
+        {
+            var path = CACHE_PATH + "/GSC_STUDIO_META.zip";
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var result = client.GetByteArrayAsync(url).Result;
+                File.WriteAllBytes(path, result);
+                ZipFile.ExtractToDirectory(path, CACHE_PATH + "/");
+                File.Delete(path);
+                Directory.Move(CACHE_PATH + "/Monaco-main", CACHE_PATH + "/editor");
+            }
+        }
     }
 }

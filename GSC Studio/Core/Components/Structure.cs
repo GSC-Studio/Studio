@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GSC_Studio.Core.Components
 {
@@ -18,6 +19,8 @@ namespace GSC_Studio.Core.Components
             Dock = DockStyle.Fill;
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
         }
+
+        public DockPanel DockerControl => Docker;
 
         protected override CreateParams CreateParams
         {

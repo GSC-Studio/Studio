@@ -32,9 +32,17 @@ namespace GSC_Studio.Core
 
             AddControlBody(structure);
             AddControlHead(menubar);
+
+            AddEditor("Test.gsc", "lol");
         }
 
         public void UpdateBorderColor() => BackColor = (!isDebugging ? DefaultColor : DebugColor);
+
+        public void AddEditor(string title, string value)
+        {
+            Editor editor = new Editor { Text = title };
+            editor.Show(structure.DockerControl);
+        }
 
         protected override void OnDeactivate(EventArgs e)
         {

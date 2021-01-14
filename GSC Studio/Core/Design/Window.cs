@@ -17,7 +17,6 @@ namespace GSC_Studio.Core.Design
     {
         #region Load
 
-
         [DllImport("user32.dll")]
         static extern bool LockWindowUpdate(IntPtr hWndLock);
 
@@ -120,7 +119,8 @@ namespace GSC_Studio.Core.Design
 
         private Button CustomeButton()
         {
-            Button button = new Button {
+            Button button = new Button
+            {
                 BackColor = Color.Transparent,
                 FlatStyle = FlatStyle.Flat,
                 ForeColor = Color.White,
@@ -179,7 +179,7 @@ namespace GSC_Studio.Core.Design
 
         public void AddControlBody(params Control[] controls)
         {
-            if(body != null)
+            if (body != null)
             {
                 body.Controls.AddRange(controls);
             }
@@ -213,7 +213,6 @@ namespace GSC_Studio.Core.Design
             get
             {
                 CreateParams handleParam = base.CreateParams;
-                //handleParam.ClassStyle |= 0x20000;
                 handleParam.ExStyle |= 0x02000000;
                 return handleParam;
             }
@@ -221,33 +220,19 @@ namespace GSC_Studio.Core.Design
 
         protected override void WndProc(ref Message message)
         {
-            FormWindowState org = this.WindowState;
             base.WndProc(ref message);
             switch (message.Msg)
             {
                 case 0x84:
                     this.EnableResizing(ref message);
                     break;
-                /*case 0x0005:
-                    OnFormWindowStateChanged(EventArgs.Empty);
-                    break;*/
             }
-
-            if (this.WindowState != org)
-                OnFormWindowStateChanged(EventArgs.Empty);
-        }
-
-        protected virtual void OnFormWindowStateChanged(EventArgs e)
-        {
-            this.Update();
-            this.Invalidate();
         }
 
         protected override void OnResizeBegin(EventArgs e)
         {
             currentSize = this.Size;
             base.OnResizeBegin(e);
-            //body.SuspendLayout();
         }
 
         protected override void OnResizeEnd(EventArgs e)
@@ -255,7 +240,9 @@ namespace GSC_Studio.Core.Design
             base.OnResizeEnd(e);
             currentSize = this.Size;
             this.UnlockWindow();
-            //body.ResumeLayout();
+
+            this.Update();
+            this.Invalidate();
         }
 
         protected override void OnMove(EventArgs e)
@@ -272,7 +259,7 @@ namespace GSC_Studio.Core.Design
         {
             base.OnSizeChanged(e);
 
-            if (this.WindowState == FormWindowState.Normal)
+            if (WindowState == FormWindowState.Normal)
             {
                 if (isLocked && IsResized())
                 {
@@ -281,6 +268,15 @@ namespace GSC_Studio.Core.Design
                     LockWindow();
                 }
             }
+
+            Task.Run(() =>
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    this.Update();
+                    this.Invalidate();
+                });
+            });
         }
 
         private void LockWindow()
