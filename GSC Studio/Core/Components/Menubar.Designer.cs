@@ -46,9 +46,8 @@ namespace GSC_Studio.Core.Components
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.QuitStudio = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Redo = new System.Windows.Forms.ToolStripMenuItem();
+            this.Undo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.Cut = new System.Windows.Forms.ToolStripMenuItem();
             this.Copy = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,15 +55,20 @@ namespace GSC_Studio.Core.Components
             this.Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.SelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.Undo = new System.Windows.Forms.ToolStripMenuItem();
-            this.Redo = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.explorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.outputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BuildProject = new System.Windows.Forms.ToolStripMenuItem();
             this.platfromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BuildForConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.BuildForPC = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugOnPS3 = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugOnXBOX = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugOnPC = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip1.SuspendLayout();
@@ -77,6 +81,7 @@ namespace GSC_Studio.Core.Components
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.buildToolStripMenuItem,
             this.debugToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -114,12 +119,14 @@ namespace GSC_Studio.Core.Components
             // 
             // CreateProject
             // 
+            this.CreateProject.Image = global::GSC_Studio.Properties.Resources.NewFileCollection_16x;
             this.CreateProject.Name = "CreateProject";
             this.CreateProject.Size = new System.Drawing.Size(180, 22);
             this.CreateProject.Text = "Project";
             // 
             // CreateFile
             // 
+            this.CreateFile.Image = global::GSC_Studio.Properties.Resources.NewFile_16x;
             this.CreateFile.Name = "CreateFile";
             this.CreateFile.Size = new System.Drawing.Size(180, 22);
             this.CreateFile.Text = "File";
@@ -135,6 +142,7 @@ namespace GSC_Studio.Core.Components
             // 
             // projectToolStripMenuItem1
             // 
+            this.projectToolStripMenuItem1.Image = global::GSC_Studio.Properties.Resources.Folder_16x;
             this.projectToolStripMenuItem1.Name = "projectToolStripMenuItem1";
             this.projectToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.projectToolStripMenuItem1.Text = "Project";
@@ -152,6 +160,7 @@ namespace GSC_Studio.Core.Components
             // 
             // SaveCurrentFile
             // 
+            this.SaveCurrentFile.Image = global::GSC_Studio.Properties.Resources.Save_16x;
             this.SaveCurrentFile.Name = "SaveCurrentFile";
             this.SaveCurrentFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.SaveCurrentFile.Size = new System.Drawing.Size(180, 22);
@@ -159,6 +168,7 @@ namespace GSC_Studio.Core.Components
             // 
             // SaveWholeProject
             // 
+            this.SaveWholeProject.Image = global::GSC_Studio.Properties.Resources.SaveAll_16x;
             this.SaveWholeProject.Name = "SaveWholeProject";
             this.SaveWholeProject.Size = new System.Drawing.Size(180, 22);
             this.SaveWholeProject.Text = "Save all";
@@ -208,33 +218,19 @@ namespace GSC_Studio.Core.Components
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 59);
             this.editToolStripMenuItem.Text = "Edit";
             // 
-            // buildToolStripMenuItem
+            // Redo
             // 
-            this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BuildProject,
-            this.platfromToolStripMenuItem});
-            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 59);
-            this.buildToolStripMenuItem.Text = "Build";
+            this.Redo.Image = global::GSC_Studio.Properties.Resources.Undo_16x;
+            this.Redo.Name = "Redo";
+            this.Redo.Size = new System.Drawing.Size(180, 22);
+            this.Redo.Text = "Redo";
             // 
-            // debugToolStripMenuItem
+            // Undo
             // 
-            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DebugOnPS3,
-            this.DebugOnXBOX,
-            this.DebugOnPC});
-            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 59);
-            this.debugToolStripMenuItem.Text = "Debug";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenAbout,
-            this.OpenSettings});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 59);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.Undo.Image = global::GSC_Studio.Properties.Resources.Redo_16x;
+            this.Undo.Name = "Undo";
+            this.Undo.Size = new System.Drawing.Size(180, 22);
+            this.Undo.Text = "Undo";
             // 
             // toolStripSeparator4
             // 
@@ -276,17 +272,42 @@ namespace GSC_Studio.Core.Components
             this.SelectAll.Size = new System.Drawing.Size(180, 22);
             this.SelectAll.Text = "Select All";
             // 
-            // Undo
+            // viewToolStripMenuItem
             // 
-            this.Undo.Name = "Undo";
-            this.Undo.Size = new System.Drawing.Size(180, 22);
-            this.Undo.Text = "Undo";
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.explorerToolStripMenuItem,
+            this.errorListToolStripMenuItem,
+            this.outputToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 59);
+            this.viewToolStripMenuItem.Text = "View";
             // 
-            // Redo
+            // explorerToolStripMenuItem
             // 
-            this.Redo.Name = "Redo";
-            this.Redo.Size = new System.Drawing.Size(180, 22);
-            this.Redo.Text = "Redo";
+            this.explorerToolStripMenuItem.Name = "explorerToolStripMenuItem";
+            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.explorerToolStripMenuItem.Text = "Explorer";
+            // 
+            // errorListToolStripMenuItem
+            // 
+            this.errorListToolStripMenuItem.Name = "errorListToolStripMenuItem";
+            this.errorListToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.errorListToolStripMenuItem.Text = "Error List";
+            // 
+            // outputToolStripMenuItem
+            // 
+            this.outputToolStripMenuItem.Name = "outputToolStripMenuItem";
+            this.outputToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.outputToolStripMenuItem.Text = "Output";
+            // 
+            // buildToolStripMenuItem
+            // 
+            this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BuildProject,
+            this.platfromToolStripMenuItem});
+            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 59);
+            this.buildToolStripMenuItem.Text = "Build";
             // 
             // BuildProject
             // 
@@ -306,14 +327,24 @@ namespace GSC_Studio.Core.Components
             // BuildForConsole
             // 
             this.BuildForConsole.Name = "BuildForConsole";
-            this.BuildForConsole.Size = new System.Drawing.Size(180, 22);
+            this.BuildForConsole.Size = new System.Drawing.Size(117, 22);
             this.BuildForConsole.Text = "Console";
             // 
             // BuildForPC
             // 
             this.BuildForPC.Name = "BuildForPC";
-            this.BuildForPC.Size = new System.Drawing.Size(180, 22);
+            this.BuildForPC.Size = new System.Drawing.Size(117, 22);
             this.BuildForPC.Text = "PC";
+            // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DebugOnPS3,
+            this.DebugOnXBOX,
+            this.DebugOnPC});
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 59);
+            this.debugToolStripMenuItem.Text = "Debug";
             // 
             // DebugOnPS3
             // 
@@ -332,6 +363,15 @@ namespace GSC_Studio.Core.Components
             this.DebugOnPC.Name = "DebugOnPC";
             this.DebugOnPC.Size = new System.Drawing.Size(180, 22);
             this.DebugOnPC.Text = "PC";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenAbout,
+            this.OpenSettings});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 59);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // OpenAbout
             // 
@@ -400,5 +440,9 @@ namespace GSC_Studio.Core.Components
         private System.Windows.Forms.ToolStripMenuItem DebugOnPC;
         private System.Windows.Forms.ToolStripMenuItem OpenAbout;
         private System.Windows.Forms.ToolStripMenuItem OpenSettings;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem explorerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem errorListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem outputToolStripMenuItem;
     }
 }
