@@ -24,12 +24,11 @@ namespace GSC_Studio
 
             if (!inital.CacheExists())
             {
-                inital.CreateCacheFolder();
-
                 if (MessageBox.Show("You launch GSC Studio for the first time, important modules will be installed.", "GSC Studio - Service", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
+                    inital.CreateCacheFolder();
                     inital.CreateFileInCache("startup.json", JsonConvert.SerializeObject(startup));
-                    inital.CreateRepositoryToCache(EDITOR);
+                    inital.CreateRepositoryToCache(EDITOR, "/Monaco-main", "/editor");
                 }
                 else
                 {

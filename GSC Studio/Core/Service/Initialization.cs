@@ -44,7 +44,7 @@ namespace GSC_Studio.Core.Service
 
         public List<string> GetFoldersFromProject() => Directory.GetDirectories(CACHE_PATH).ToList();
     
-        public void CreateRepositoryToCache(string url)
+        public void CreateRepositoryToCache(string url, params string[] rename)
         {
             var path = CACHE_PATH + "/GSC_STUDIO_META.zip";
             using (var client = new System.Net.Http.HttpClient())
@@ -53,7 +53,7 @@ namespace GSC_Studio.Core.Service
                 File.WriteAllBytes(path, result);
                 ZipFile.ExtractToDirectory(path, CACHE_PATH + "/");
                 File.Delete(path);
-                Directory.Move(CACHE_PATH + "/Monaco-main", CACHE_PATH + "/editor");
+                Directory.Move(CACHE_PATH + rename[0], CACHE_PATH + rename[1]);
             }
         }
     }

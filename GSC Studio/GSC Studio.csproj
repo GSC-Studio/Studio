@@ -68,6 +68,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Assets\BuildMode.cs" />
+    <Compile Include="Core\Assets\ErrorMessage.cs" />
+    <Compile Include="Core\Assets\FileModel.cs" />
+    <Compile Include="Core\Assets\ProjectModel.cs" />
     <Compile Include="Core\Assets\Startup.cs" />
     <Compile Include="Core\Components\Editor.cs">
       <SubType>Form</SubType>
