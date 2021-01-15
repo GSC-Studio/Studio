@@ -91,7 +91,14 @@
     <Compile Include="Core\Components\Structure.Designer.cs">
       <DependentUpon>Structure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Components\Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Components\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\Design\Container.cs" />
+    <Compile Include="Core\Design\FixedButton.cs" />
     <Compile Include="Core\Design\Window.cs" />
     <Compile Include="Core\Service\Initialization.cs" />
     <Compile Include="Core\Service\Project.cs" />
@@ -112,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Components\Structure.resx">
       <DependentUpon>Structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Components\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CefSharp;
+using CefSharp.SchemeHandler;
+using CefSharp.WinForms;
+using GSC_Studio.Core.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,10 +12,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CefSharp;
-using CefSharp.SchemeHandler;
-using CefSharp.WinForms;
-using GSC_Studio.Core.Service;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GSC_Studio.Core.Components
@@ -34,23 +34,6 @@ namespace GSC_Studio.Core.Components
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);
             SAFECONTROL.Hide();
-
-            CefSettings settings = new CefSettings();
-            settings.WindowlessRenderingEnabled = true;
-            settings.BackgroundColor = 0x00;
-
-            settings.RegisterScheme(new CefCustomScheme
-            {
-                SchemeName = "CACHE",
-                DomainName = "gsc_studio",
-                SchemeHandlerFactory = new FolderSchemeHandlerFactory(
-                    rootFolder: (Initialization.CACHE_PATH + "/editor/"),
-                    hostName: "gsc_studio",
-                    defaultPage: "index.html"
-                )
-            });
-
-            Cef.Initialize(settings);
 
             WebControl = new ChromiumWebBrowser("CACHE://gsc_studio/")
             {

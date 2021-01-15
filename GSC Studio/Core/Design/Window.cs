@@ -117,36 +117,33 @@ namespace GSC_Studio.Core.Design
             MaximizedBounds = Screen.GetWorkingArea(this);
         }
 
-        private Button CustomeButton()
-        {
-            Button button = new Button
-            {
-                BackColor = Color.Transparent,
-                FlatStyle = FlatStyle.Flat,
-                ForeColor = Color.White,
-                Width = 45,
-                Dock = DockStyle.Right
-            };
-
-            button.FlatAppearance.BorderSize = 0;
-            button.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0, 0);
-            button.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 30, 30);
-            button.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
-
-            return button;
-        }
-
         private void InitalizeControlButtons(Panel control_buttons)
         {
-            Button CloseButton = CustomeButton();
-            Button MaximizeButton = CustomeButton();
-            Button MinimizeButton = CustomeButton();
+            bool isHover = false;
+            Button CloseButton = new FixedButton();
+            Button MaximizeButton = new FixedButton();
+            Button MinimizeButton = new FixedButton();
 
             CloseButton.Paint += (object o, PaintEventArgs e) =>
             {
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
                 e.Graphics.DrawLine(new Pen(Brushes.White, 1), new Point(18, 10), new Point(28, 20));
                 e.Graphics.DrawLine(new Pen(Brushes.White, 1), new Point(18, 20), new Point(28, 10));
+            };
+
+            MaximizeButton.MouseHover += (object o, EventArgs e) => {
+                if (WindowState == FormWindowState.Maximized)
+                {
+                    isHover = true;
+                    this.Refresh();
+                }
+            };
+            MaximizeButton.MouseLeave += (object o, EventArgs e) => {
+                if (WindowState == FormWindowState.Maximized)
+                {
+                    isHover = false;
+                    this.Refresh();
+                }
             };
 
             MaximizeButton.Paint += (object o, PaintEventArgs e) =>
@@ -156,10 +153,11 @@ namespace GSC_Studio.Core.Design
                 {
                     e.Graphics.DrawRectangle(new Pen(Brushes.White, 1), new Rectangle(18, 10, 10, 10));
                 }
-                else
+                else if(WindowState == FormWindowState.Maximized)
                 {
-                    e.Graphics.DrawRectangle(new Pen(Brushes.White, 1), new Rectangle(15, 12, 10, 10));
                     e.Graphics.DrawRectangle(new Pen(Brushes.White, 1), new Rectangle(18, 10, 10, 10));
+                    e.Graphics.FillRectangle(new SolidBrush(isHover ? Color.FromArgb(70, 70, 70) : Color.FromArgb(45, 45, 48)), new Rectangle(15, 12, 10, 10));
+                    e.Graphics.DrawRectangle(new Pen(Brushes.White, 1), new Rectangle(15, 12, 10, 10));
                 }
 
             };

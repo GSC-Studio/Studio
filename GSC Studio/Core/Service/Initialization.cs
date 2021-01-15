@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
 
 namespace GSC_Studio.Core.Service
 {
@@ -43,7 +43,7 @@ namespace GSC_Studio.Core.Service
         }
 
         public List<string> GetFoldersFromProject() => Directory.GetDirectories(CACHE_PATH).ToList();
-    
+
         public void CreateRepositoryToCache(string url, params string[] rename)
         {
             var path = CACHE_PATH + "/GSC_STUDIO_META.zip";
